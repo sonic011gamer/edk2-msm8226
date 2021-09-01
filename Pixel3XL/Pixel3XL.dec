@@ -36,4 +36,6 @@
   gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferAddress|0x00400000|UINT32|0x0000a400 # 0x7C400000
   gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferWidth|1080|UINT32|0x0000a401
   gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferHeight|1920|UINT32|0x0000a402
-  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32|UINT32|0x0000a403
+  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|24|UINT32|0x0000a403
+  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|1080|UINT32|0x0000a404
+  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1920|UINT32|0x0000a405 

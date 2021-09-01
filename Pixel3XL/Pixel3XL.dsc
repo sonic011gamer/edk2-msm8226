@@ -31,6 +31,7 @@
 [LibraryClasses.common]
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
   ArmPlatformLib|Pixel3XL/Library/Pixel3XLLib/Pixel3XLLib.inf
+  CompilerIntrinsicsLib|ArmPkg/Library/CompilerIntrinsicsLib/CompilerIntrinsicsLib.inf
 
   CapsuleLib|MdeModulePkg/Library/DxeCapsuleLibNull/DxeCapsuleLibNull.inf
   UefiBootManagerLib|MdeModulePkg/Library/UefiBootManagerLib/UefiBootManagerLib.inf
@@ -65,6 +66,8 @@
 
   # SimpleFbDxe
   FrameBufferBltLib|MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+
+  SerialPortLib|Pixel3XL/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
 
 [LibraryClasses.common.SEC]
   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
@@ -136,6 +139,8 @@
   gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferAddress|0x8e000000
   gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferHeight|1280
+  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|720
+  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1280
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiExposedTableVersions|0x20
 
