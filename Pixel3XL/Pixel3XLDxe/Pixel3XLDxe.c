@@ -43,6 +43,7 @@ InitPeripherals (
   IN VOID
   )
 {
+ // MmioWrite32(0x004ab000, 0);
   /* This also crashes. Do you really hate memory attributes or something?
   EFI_STATUS            Status;
   // https://lists.01.org/pipermail/edk2-devel/2017-August/013417.html

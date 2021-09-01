@@ -27,7 +27,7 @@
 #define DDR_ATTRIBUTES_UNCACHED         ARM_MEMORY_REGION_ATTRIBUTE_UNCACHED_UNBUFFERED
 
 #define SDM845_PERIPH_BASE              0x00000000
-#define SDM845_PERIPH_SZ                0x80000000
+#define SDM845_PERIPH_SZ                0x60000000
 
 #define HIKEY960_MEMORY_SIZE               0x0000000100000000
 
@@ -35,10 +35,17 @@ STATIC struct Pixel3XLReservedMemory {
   EFI_PHYSICAL_ADDRESS         Offset;
   EFI_PHYSICAL_ADDRESS         Size;
 } Pixel3XLReservedMemoryBuffer [] = {
-  { 0x85700000, 0x00600000 },    // hyp_region
-  { 0x85e00000, 0x00100000 },    // xbl_region
-  { 0x85fc0000, 0x02f40000 },    // removed_region
-  { 0x8ab00000, 0x01400000 },    // qseecom_region
+/**  { 0x86000000, 0x00300000 },    // tz_apps_region
+  { 0x86300000, 0x00100000 },    // smem_region
+  { 0x86400000, 0x00280000 },    // tz/hyp_region
+  { 0x86700000, 0x06C00000 },    // MPSS/EFS/DHMS/PIL_region
+**/
+/*
+  { 0x85A00000, 0x00E00000 },    // tz-apps_region
+  { 0x86800000, 0x05400000 },    // mpss_region
+  { 0x8bc00000, 0x00200000 },    // gps_region
+  { 0x8be00000, 0x00600000 },    // wcnss_region
+  { 0x8c400000, 0x00600000 },    // venus_region*/
 };
 
 /**
