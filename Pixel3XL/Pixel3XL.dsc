@@ -65,7 +65,7 @@
   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
 
   # SimpleFbDxe
-  FrameBufferBltLib|MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+  FrameBufferBltLib|Pixel3XL/Library/FrameBufferBltLib/FrameBufferBltLib.inf
 
   SerialPortLib|Pixel3XL/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
 

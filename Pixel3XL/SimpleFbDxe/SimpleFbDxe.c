@@ -10,7 +10,7 @@
 #include <Library/DxeServicesTableLib.h>
 #include <Protocol/GraphicsOutput.h>
 #include <Library/BaseLib.h>
-#include <Library/FrameBufferBltLib.h>
+#include "Library/FrameBufferBltLib.h"
 #include <Library/CacheMaintenanceLib.h>
 
 /// Defines
@@ -65,7 +65,7 @@ DISPLAY_DEVICE_PATH mDisplayDevicePath =
     }
 };
 
-/// Declares
+/// DeclaresSimpleFbDxe/SimpleFbDxe.c
 
 STATIC FRAME_BUFFER_CONFIGURE        *mFrameBufferBltLibConfigure;
 STATIC UINTN                         mFrameBufferBltLibConfigureSize;
