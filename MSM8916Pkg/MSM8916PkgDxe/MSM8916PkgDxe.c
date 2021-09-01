@@ -34,7 +34,7 @@
 #include <Protocol/LoadedImage.h>
 #include <Protocol/PlatformBootManager.h>
 
-#include "Pixel3XLDxe.h"
+#include "MSM8916PkgDxe.h"
 
 EFI_CPU_ARCH_PROTOCOL     *gCpu;
 
@@ -81,7 +81,7 @@ OnEndOfDxe (
 
 EFI_STATUS
 EFIAPI
-Pixel3XLEntryPoint (
+MSM8916PkgEntryPoint (
   IN EFI_HANDLE         ImageHandle,
   IN EFI_SYSTEM_TABLE   *SystemTable
   )

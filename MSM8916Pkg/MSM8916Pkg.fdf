@@ -24,7 +24,7 @@
 #
 ################################################################################
 
-[FD.PIXEL3XL_UEFI]
+[FD.MSM8916PKG_UEFI]
 BaseAddress   = 0x80080000|gArmTokenSpaceGuid.PcdFdBaseAddress  # The base address of the Firmware in NOR Flash.
 Size          = 0x00200000|gArmTokenSpaceGuid.PcdFdSize         # The size in bytes of the FLASH Device
 ErasePolarity = 1
@@ -147,8 +147,8 @@ READ_LOCK_STATUS   = TRUE
   #
   INF EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
 
-  INF Pixel3XL/Pixel3XLDxe/Pixel3XLDxe.inf
-  INF Pixel3XL/SimpleFbDxe/SimpleFbDxe.inf
+  INF MSM8916Pkg/MSM8916PkgDxe/MSM8916PkgDxe.inf
+  INF MSM8916Pkg/SimpleFbDxe/SimpleFbDxe.inf
 
 
   #
@@ -189,12 +189,12 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
   INF MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
   INF MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
-  INF RuleOverride = ACPITABLE Pixel3XL/AcpiTables/AcpiTables.inf
+  INF RuleOverride = ACPITABLE MSM8916Pkg/AcpiTables/AcpiTables.inf
 
   #
   # SMBIOS Support
   #
-  INF Pixel3XL/Drivers/SmbiosPlatformDxe/SmbiosPlatformDxe.inf
+  INF MSM8916Pkg/Drivers/SmbiosPlatformDxe/SmbiosPlatformDxe.inf
   INF MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
 
   #
@@ -240,4 +240,4 @@ READ_LOCK_STATUS   = TRUE
     }
   }
 
-!include Pixel3XL/CommonFdf.fdf.inc
+!include MSM8916Pkg/CommonFdf.fdf.inc

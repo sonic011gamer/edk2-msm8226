@@ -16,7 +16,7 @@
 #
 ################################################################################
 [Defines]
-  PLATFORM_NAME                  = Pixel3XL
+  PLATFORM_NAME                  = MSM8916Pkg
   PLATFORM_GUID                  = 28f1a3bf-193a-47e3-a7b9-5a435eaab2ee
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010019
@@ -24,13 +24,13 @@
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
-  FLASH_DEFINITION               = Pixel3XL/Pixel3XL.fdf
+  FLASH_DEFINITION               = MSM8916Pkg/MSM8916Pkg.fdf
 
-!include Pixel3XL/CommonDsc.dsc.inc
+!include MSM8916Pkg/CommonDsc.dsc.inc
 
 [LibraryClasses.common]
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
-  ArmPlatformLib|Pixel3XL/Library/Pixel3XLLib/Pixel3XLLib.inf
+  ArmPlatformLib|MSM8916Pkg/Library/MSM8916PkgLib/MSM8916PkgLib.inf
   CompilerIntrinsicsLib|ArmPkg/Library/CompilerIntrinsicsLib/CompilerIntrinsicsLib.inf
 
   CapsuleLib|MdeModulePkg/Library/DxeCapsuleLibNull/DxeCapsuleLibNull.inf
@@ -44,7 +44,7 @@
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
   BootLogoLib|MdeModulePkg/Library/BootLogoLib/BootLogoLib.inf
 
-  SerialPortLib|Pixel3XL/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
+  SerialPortLib|MSM8916Pkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
   RealTimeClockLib|EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
   TimeBaseLib|EmbeddedPkg/Library/TimeBaseLib/TimeBaseLib.inf
 
@@ -65,9 +65,9 @@
   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
 
   # SimpleFbDxe
-  FrameBufferBltLib|Pixel3XL/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+  FrameBufferBltLib|MSM8916Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
 
-  SerialPortLib|Pixel3XL/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
+  SerialPortLib|MSM8916Pkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
 
 [LibraryClasses.common.SEC]
   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
@@ -90,23 +90,14 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutGopSupport|TRUE
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutUgaSupport|FALSE
 
-
 [PcdsFixedAtBuild.common]
   gEfiMdePkgTokenSpaceGuid.PcdDefaultTerminalType|4
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"Alpha"
 
-  # System Memory (1.5GB)
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x60000000
-
   # We only boot one processor here!
   gArmPlatformTokenSpaceGuid.PcdCoreCount|1
   gArmPlatformTokenSpaceGuid.PcdClusterCount|1
-
-  #
-  # ARM PrimeCell
-  #
 
   #
   # ARM General Interrupt Controller
@@ -135,12 +126,6 @@
   # Make VariableRuntimeDxe work at emulated non-volatile variable mode.
   #
   gEfiMdeModulePkgTokenSpaceGuid.PcdEmuVariableNvModeEnable|TRUE
-
-  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferAddress|0x8e000000
-  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferWidth|720
-  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferHeight|1280
-  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|720
-  gPixel3XLTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1280
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiExposedTableVersions|0x20
 
@@ -200,8 +185,8 @@
   #
   EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
 
-  Pixel3XL/Pixel3XLDxe/Pixel3XLDxe.inf
-  Pixel3XL/SimpleFbDxe/SimpleFbDxe.inf
+  MSM8916Pkg/MSM8916PkgDxe/MSM8916PkgDxe.inf
+  MSM8916Pkg/SimpleFbDxe/SimpleFbDxe.inf
 
   #
   # USB Host Support
@@ -238,12 +223,12 @@
   MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
   MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
   MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
-  Pixel3XL/AcpiTables/AcpiTables.inf
+  MSM8916Pkg/AcpiTables/AcpiTables.inf
 
   #
   # SMBIOS Support
   #
-  Pixel3XL/Drivers/SmbiosPlatformDxe/SmbiosPlatformDxe.inf
+  MSM8916Pkg/Drivers/SmbiosPlatformDxe/SmbiosPlatformDxe.inf
   MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
 
   #

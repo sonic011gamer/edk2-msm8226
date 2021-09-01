@@ -12,7 +12,7 @@
 *
 **/
 
-#ifndef __PIXEL3XLDXE_H__
-#define __PIXEL3XLDXE_H__
+#ifndef __MSM8916PKGDXE_H__
+#define __MSM8916PKGDXE_H__
 
-#endif /* __PIXEL3XLDXE_H__ */
+#endif /* __MSM8916PKGDXE_H__ */

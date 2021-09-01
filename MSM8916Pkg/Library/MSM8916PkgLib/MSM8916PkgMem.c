@@ -31,10 +31,10 @@
 
 #define HIKEY960_MEMORY_SIZE               0x0000000100000000
 
-STATIC struct Pixel3XLReservedMemory {
+STATIC struct MSM8916PkgReservedMemory {
   EFI_PHYSICAL_ADDRESS         Offset;
   EFI_PHYSICAL_ADDRESS         Size;
-} Pixel3XLReservedMemoryBuffer [] = {
+} MSM8916PkgReservedMemoryBuffer [] = {
 /**  { 0x86000000, 0x00300000 },    // tz_apps_region
   { 0x86300000, 0x00100000 },    // smem_region
   { 0x86400000, 0x00280000 },    // tz/hyp_region
@@ -89,30 +89,30 @@ ArmPlatformGetVirtualMemoryMap (
   );
 
   NextHob.Raw = GetHobList ();
-  Count = sizeof (Pixel3XLReservedMemoryBuffer) / sizeof (struct Pixel3XLReservedMemory);
+  Count = sizeof (MSM8916PkgReservedMemoryBuffer) / sizeof (struct MSM8916PkgReservedMemory);
   while ((NextHob.Raw = GetNextHob (EFI_HOB_TYPE_RESOURCE_DESCRIPTOR, NextHob.Raw)) != NULL)
   {
     if (Index >= Count)
       break;
     if ((NextHob.ResourceDescriptor->ResourceType == EFI_RESOURCE_SYSTEM_MEMORY) &&
-        (Pixel3XLReservedMemoryBuffer[Index].Offset >= NextHob.ResourceDescriptor->PhysicalStart) &&
-        ((Pixel3XLReservedMemoryBuffer[Index].Offset + Pixel3XLReservedMemoryBuffer[Index].Size) <=
+        (MSM8916PkgReservedMemoryBuffer[Index].Offset >= NextHob.ResourceDescriptor->PhysicalStart) &&
+        ((MSM8916PkgReservedMemoryBuffer[Index].Offset + MSM8916PkgReservedMemoryBuffer[Index].Size) <=
          NextHob.ResourceDescriptor->PhysicalStart + NextHob.ResourceDescriptor->ResourceLength))
     {
       ResourceAttributes = NextHob.ResourceDescriptor->ResourceAttribute;
       ResourceLength = NextHob.ResourceDescriptor->ResourceLength;
       ResourceTop = NextHob.ResourceDescriptor->PhysicalStart + ResourceLength;
-      ReservedTop = Pixel3XLReservedMemoryBuffer[Index].Offset + Pixel3XLReservedMemoryBuffer[Index].Size;
+      ReservedTop = MSM8916PkgReservedMemoryBuffer[Index].Offset + MSM8916PkgReservedMemoryBuffer[Index].Size;
 
       // Create the System Memory HOB for the reserved buffer
       BuildResourceDescriptorHob (
         EFI_RESOURCE_MEMORY_RESERVED,
         EFI_RESOURCE_ATTRIBUTE_PRESENT,
-        Pixel3XLReservedMemoryBuffer[Index].Offset,
-        Pixel3XLReservedMemoryBuffer[Index].Size
+        MSM8916PkgReservedMemoryBuffer[Index].Offset,
+        MSM8916PkgReservedMemoryBuffer[Index].Size
       );
       // Update the HOB
-      NextHob.ResourceDescriptor->ResourceLength = Pixel3XLReservedMemoryBuffer[Index].Offset -
+      NextHob.ResourceDescriptor->ResourceLength = MSM8916PkgReservedMemoryBuffer[Index].Offset -
                                                    NextHob.ResourceDescriptor->PhysicalStart;
 
       // If there is some memory available on the top of the reserved memory then create a HOB
