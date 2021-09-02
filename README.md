@@ -1,12 +1,7 @@
-Attempt to create a minimal EDK2 for Pixel 3 XL.
-
-[![Build Status](https://dev.azure.com/zhuoweizhang/edk2-pixel3/_apis/build/status/Pixel3Dev.edk2-pixel3?branchName=master)](https://dev.azure.com/zhuoweizhang/edk2-pixel3/_build/latest?definitionId=1&branchName=master)
+Attempt to create a minimal EDK2 for MSM8916 devices
 
 ## Status
-
-Can partially boot the Fedora 29 aarch64 kernel: there's no initrd, so the kernel panics when mounting root FS.
-
-Since there's no internal storage support yet, use the addlinux branch to embed a Linux kernel in the UEFI firmware.
+Boots to efi shell.
 
 ## Building
 Tested on Ubuntu 18.04.
@@ -31,10 +26,14 @@ sudo apt install build-essential uuid-dev iasl git nasm python3-distutils gcc-aa
 
 Also see [EDK2 website](https://github.com/tianocore/tianocore.github.io/wiki/Using-EDK-II-with-Native-GCC#Install_required_software_from_apt)
 
+Then ./firstrun.sh
+
 Finally, ./build.sh.
 
-Then fastboot boot uefi.img.
+Then fastboot boot uefi.img from lk2nd.
 
 # Credits
 
 SimpleFbDxe screen driver is from imbushuo's [Lumia950XLPkg](https://github.com/WOA-Project/Lumia950XLPkg).
+Zhuowei for making edk2-pixel3
+all my friends for supporting me (yes also mis012 :)
