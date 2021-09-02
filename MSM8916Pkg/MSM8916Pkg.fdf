@@ -153,6 +153,10 @@ READ_LOCK_STATUS   = TRUE
   INF MSM8916Pkg/Drivers/MSM8916PkgDxe/MSM8916PkgDxe.inf
   INF MSM8916Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 
+  #
+  # SoC Drivers
+  #
+  INF MSM8916Pkg/Drivers/ClockDxe/ClockDxe.inf
 
   #
   # USB Host Support

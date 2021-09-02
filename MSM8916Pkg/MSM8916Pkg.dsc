@@ -72,12 +72,31 @@
   MemoryInitPeiLib|MSM8916Pkg/Library/MemoryInitPeiLib/PeiMemoryAllocationLib.inf
   PlatformPeiLib|MSM8916Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
 
+  # SoC Drivers
+  QcomPlatformClockInitLib|MSM8916Pkg/Library/QcomPlatformClockInitLib/QcomPlatformClockInitLib.inf
+
 [LibraryClasses.common.SEC]
   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
   ExtractGuidedSectionLib|EmbeddedPkg/Library/PrePiExtractGuidedSectionLib/PrePiExtractGuidedSectionLib.inf
   HobLib|EmbeddedPkg/Library/PrePiHobLib/PrePiHobLib.inf
   MemoryAllocationLib|EmbeddedPkg/Library/PrePiMemoryAllocationLib/PrePiMemoryAllocationLib.inf
   PrePiHobListPointerLib|ArmPlatformPkg/Library/PrePiHobListPointerLib/PrePiHobListPointerLib.inf
+
+  # SoC Drivers
+  ClockLib|MSM8916Pkg/Drivers/ClockDxe/ClockImplLib.inf
+
+[LibraryClasses.common.DXE_DRIVER]
+  # SoC Drivers
+  ClockLib|MSM8916Pkg/Drivers/ClockDxe/ClockLib.inf
+
+[LibraryClasses.common.UEFI_APPLICATION]
+  # SoC Drivers
+  ClockLib|MSM8916Pkg/Drivers/ClockDxe/ClockLib.inf
+
+[LibraryClasses.common.UEFI_DRIVER]
+  # SoC Drivers
+  ClockLib|MSM8916Pkg/Drivers/ClockDxe/ClockLib.inf
+
 
 ################################################################################
 #
@@ -180,8 +199,10 @@
   MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
   #
-  # GPIO
+  # SoC Drivers
   #
+
+  MSM8916Pkg/Drivers/ClockDxe/ClockDxe.inf
 
   #
   # Virtual Keyboard
