@@ -147,8 +147,11 @@ READ_LOCK_STATUS   = TRUE
   #
   INF EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
 
-  INF MSM8916Pkg/MSM8916PkgDxe/MSM8916PkgDxe.inf
-  INF MSM8916Pkg/SimpleFbDxe/SimpleFbDxe.inf
+  #
+  # Platform Dxes
+  #
+  INF MSM8916Pkg/Drivers/MSM8916PkgDxe/MSM8916PkgDxe.inf
+  INF MSM8916Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 
 
   #

@@ -185,8 +185,11 @@
   #
   EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
 
-  MSM8916Pkg/MSM8916PkgDxe/MSM8916PkgDxe.inf
-  MSM8916Pkg/SimpleFbDxe/SimpleFbDxe.inf
+  #
+  # Platform Dxes
+  #
+  MSM8916Pkg/Drivers/MSM8916PkgDxe/MSM8916PkgDxe.inf
+  MSM8916Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 
   #
   # USB Host Support
