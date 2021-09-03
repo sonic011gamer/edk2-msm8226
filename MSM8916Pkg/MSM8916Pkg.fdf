@@ -157,6 +157,7 @@ READ_LOCK_STATUS   = TRUE
   # SoC Drivers
   #
   INF MSM8916Pkg/Drivers/ClockDxe/ClockDxe.inf
+  INF MSM8916Pkg/Drivers/BamDxe/BamDxe.inf
 
   #
   # USB Host Support

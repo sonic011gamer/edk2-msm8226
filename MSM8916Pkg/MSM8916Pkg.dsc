@@ -203,6 +203,7 @@
   #
 
   MSM8916Pkg/Drivers/ClockDxe/ClockDxe.inf
+  MSM8916Pkg/Drivers/BamDxe/BamDxe.inf
 
   #
   # Virtual Keyboard
