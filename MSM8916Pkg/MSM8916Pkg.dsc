@@ -28,7 +28,15 @@
 
 !include MSM8916Pkg/CommonDsc.dsc.inc
 
+[LibraryClasses]
+  RegisterFilterLib|MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+  VariablePolicyHelperLib|MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib.inf
+
+[LibraryClasses.common.DXE_RUNTIME_DRIVER]
+  VariablePolicyLib|MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf
+
 [LibraryClasses.common]
+  OrderedCollectionLib|MdePkg/Library/BaseOrderedCollectionRedBlackTreeLib/BaseOrderedCollectionRedBlackTreeLib.inf
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
   ArmPlatformLib|MSM8916Pkg/Library/MSM8916PkgLib/MSM8916PkgLib.inf
   CompilerIntrinsicsLib|ArmPkg/Library/CompilerIntrinsicsLib/CompilerIntrinsicsLib.inf
@@ -53,10 +61,10 @@
 
   # Network Libraries
   UefiScsiLib|MdePkg/Library/UefiScsiLib/UefiScsiLib.inf
-  NetLib|MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf
-  DpcLib|MdeModulePkg/Library/DxeDpcLib/DxeDpcLib.inf
-  IpIoLib|MdeModulePkg/Library/DxeIpIoLib/DxeIpIoLib.inf
-  UdpIoLib|MdeModulePkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
+  NetLib|NetworkPkg/Library/DxeNetLib/DxeNetLib.inf
+  DpcLib|NetworkPkg/Library/DxeDpcLib/DxeDpcLib.inf
+  IpIoLib|NetworkPkg/Library/DxeIpIoLib/DxeIpIoLib.inf
+  UdpIoLib|NetworkPkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
 
   # VariableRuntimeDxe Requirements
   SynchronizationLib|MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf

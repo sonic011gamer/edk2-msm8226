@@ -38,6 +38,7 @@
 
 [PcdsFixedAtBuild.common]
   # Simple FrameBuffer
+  gEfiMdeModulePkgTokenSpaceGuid.PcdEmuVariableNvModeEnable|TRUE|BOOLEAN|1
   gMSM8916PkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x00400000|UINT32|0x0000a400 # 0x7C400000
   gMSM8916PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080|UINT32|0x0000a401
   gMSM8916PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1920|UINT32|0x0000a402
