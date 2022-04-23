@@ -23,13 +23,11 @@
 #define MAX_VIRTUAL_MEMORY_MAP_DESCRIPTORS 12
 
 // DDR attributes
-#define DDR_ATTRIBUTES_CACHED           ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK
+#define DDR_ATTRIBUTES_CACHED           ARM_MEMORY_REGION_ATTRIBUTE_WRITE_THROUGH
 #define DDR_ATTRIBUTES_UNCACHED         ARM_MEMORY_REGION_ATTRIBUTE_UNCACHED_UNBUFFERED
 
 #define SDM845_PERIPH_BASE              0x00000000
 #define SDM845_PERIPH_SZ                0x60000000
-
-#define HIKEY960_MEMORY_SIZE               0x0000000100000000
 
 STATIC struct MSM8909PkgReservedMemory {
   EFI_PHYSICAL_ADDRESS         Offset;
@@ -141,7 +139,7 @@ ArmPlatformGetVirtualMemoryMap (
 
   Index = 0;
 
-  // DDR - 4.0GB section
+  // DDR - 1.0GB section
   VirtualMemoryTable[Index].PhysicalBase    = PcdGet64 (PcdSystemMemoryBase);
   VirtualMemoryTable[Index].VirtualBase     = PcdGet64 (PcdSystemMemoryBase);
   VirtualMemoryTable[Index].Length          = PcdGet64 (PcdSystemMemorySize);
