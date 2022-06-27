@@ -36,6 +36,7 @@ jobs:
         export PACKAGES_PATH=$PWD/home/runner/work/edk2stuff/edk2:$PWD/home/runner/work/edk2stuff/edk2-platforms:$PWD
         export WORKSPACE=$PWD/workspace
         . /home/runner/work/edk2stuff/edk2/edksetup.sh
+        chmod a+x build.sh
         ./build.sh
     - uses: actions/upload-artifact@v3
       with:
