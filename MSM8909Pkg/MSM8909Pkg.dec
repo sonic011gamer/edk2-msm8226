@@ -42,6 +42,6 @@
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x83200000|UINT32|0x0000a400 # 0x7C400000
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480|UINT32|0x0000a401
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854|UINT32|0x0000a402
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|24|UINT32|0x0000a403
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32|UINT32|0x0000a403
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480|UINT32|0x0000a404
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854|UINT32|0x0000a405 
