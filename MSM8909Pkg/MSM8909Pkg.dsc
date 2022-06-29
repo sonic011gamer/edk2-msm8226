@@ -232,7 +232,7 @@
   #
   MSM8909Pkg/Drivers/MSM8909PkgDxe/MSM8909PkgDxe.inf
   MSM8909Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
-  Lumia535Pkg/Driver/LogoDxe/LogoDxe.inf
+  MSM8909Pkg/Driver/LogoDxe/LogoDxe.inf
   #
   # USB Host Support
   #
