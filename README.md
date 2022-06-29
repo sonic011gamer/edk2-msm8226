@@ -1,7 +1,7 @@
 Attempt to create a minimal EDK2 for MSM8909 devices
 
 ## Status
-Boots to efi shell.
+Boots to efi shell, now for certain.
 
 ## Building
 Tested on Ubuntu 20.04.
