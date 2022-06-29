@@ -25,6 +25,7 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = MSM8909Pkg/MSM8909Pkg.fdf
+  DEFINE USE_SCREEN_FOR_SERIAL_OUTPUT = 1
 
 !include MSM8909Pkg/CommonDsc.dsc.inc
 

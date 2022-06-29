@@ -156,6 +156,7 @@ READ_LOCK_STATUS   = TRUE
   #
   INF MSM8909Pkg/Drivers/MSM8909PkgDxe/MSM8909PkgDxe.inf
   INF MSM8909Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
+  INF MSM8909Pkg/Drivers/LogoDxe/LogoDxe.inf
 
   #
   # SoC Drivers
