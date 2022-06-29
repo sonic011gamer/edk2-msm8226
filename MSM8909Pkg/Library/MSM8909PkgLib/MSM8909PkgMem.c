@@ -27,18 +27,21 @@
 #define DDR_ATTRIBUTES_UNCACHED         ARM_MEMORY_REGION_ATTRIBUTE_UNCACHED_UNBUFFERED
 
 #define MSM8909_PERIPH_BASE              0x00000000
-#define MSM8909_PERIPH_SZ                0x08000000
+#define MSM8909_PERIPH_SZ                0x60000000
 
 STATIC struct ReservedMemory {
     EFI_PHYSICAL_ADDRESS         Offset;
     EFI_PHYSICAL_ADDRESS         Size;
 } ReservedMemoryBuffer [] = {
-    { 0x87a00000, 0x00060000 },    // external_image_mem
-    { 0x88000000, 0x05500000 },    // modem_region
-    { 0x8d500000, 0x00500000 },    // peripheral_mem
-    { 0x00000000, 0x00600000 },    // venus_mem
-    { 0x00000000, 0x00314000 },    // audio_mem
-    { 0x83000000, 0x00c00000 },    // cont_splash_mem (framebuffer)
+    { 0x87a00000, 0x00200000 },    //tz-apps
+    { 0x87c00000, 0x000e0000 },    //rmtfs
+    { 0x87ce0000, 0x00020000 },    //rfsa
+    { 0x87d00000, 0x00100000 },    //smem
+    { 0x87e00000, 0x00200000 },    //tz
+    { 0x88000000, 0x05500000 },    //mpss
+    { 0x8d500000, 0x00700000 },    //wcnss
+    { 0x8dc00000, 0x00100000 },    //mba
+    { 0x83200000, 0x00800000 },    // cont_splash_region (framebuffer)
 };
 
 /**

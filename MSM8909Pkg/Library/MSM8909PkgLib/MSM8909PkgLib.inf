@@ -34,8 +34,7 @@
 
 [Sources.common]
   MSM8909Pkg.c
-  Arm/ArmPlatformHelper.S
-  Arm/ArmPlatformHelper.asm
+  MSM8909PkgHelper.S
   MSM8909PkgMem.c
 
 [FixedPcd]
