@@ -44,3 +44,10 @@
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|24|UINT32|0x0000a403
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480|UINT32|0x0000a404
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854|UINT32|0x0000a405 
+  gArmPlatformTokenSpaceGuid.PcdSystemMemoryUefiRegionSize|0x08000000|UINT32|0x00000036 #0x00800000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x10000|UINT32|0x00000038
+  gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize|0x10000|UINT32|0x00000039
+ # Memory allocation
+  gMSM8909PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x3CD00000|UINT64|0x00000a106
+  gMSM8909PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x03300000|UINT32|0x00000a107
+  gMSM8909PkgTokenSpaceGuid.PcdIsShimBuild|TRUE|BOOLEAN|0x000000323

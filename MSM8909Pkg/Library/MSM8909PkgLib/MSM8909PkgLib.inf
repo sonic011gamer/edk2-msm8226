@@ -24,6 +24,7 @@
   EmbeddedPkg/EmbeddedPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
+  MSM8909Pkg/MSM8909Pkg.dec
 
 [LibraryClasses]
   ArmLib
@@ -34,8 +35,10 @@
 
 [Sources.common]
   MSM8909Pkg.c
-  MSM8909PkgHelper.S
   MSM8909PkgMem.c
+
+[Sources.Arm]
+  Arm/ArmPlatformHelper.S    | GCC
 
 [FixedPcd]
   gArmTokenSpaceGuid.PcdArmPrimaryCore

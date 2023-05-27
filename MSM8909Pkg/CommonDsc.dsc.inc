@@ -254,6 +254,8 @@
   # PcdPrePiCpuMemorySize
   #
   gEmbeddedTokenSpaceGuid.PcdPrePiCpuIoSize|0
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x80C00000
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
   gEfiMdePkgTokenSpaceGuid.PcdMaximumUnicodeStringLength|1000000
   gEfiMdePkgTokenSpaceGuid.PcdMaximumAsciiStringLength|1000000
   gEfiMdePkgTokenSpaceGuid.PcdMaximumLinkedListLength|1000000
