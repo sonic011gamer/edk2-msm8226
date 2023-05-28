@@ -32,6 +32,7 @@
 #include <Chipset/clock.h>
 #include <Chipset/clock_lib2.h>
 
+
 #define UART_DM_CLK_RX_TX_BIT_RATE 0xCC
 
 #define REG_MM(off)                     (CLK_CTL_BASE + (off))
@@ -73,5 +74,8 @@ void clock_config_uart_dm(uint8_t id);
 void hsusb_clock_init(void);
 void clock_config_ce(uint8_t instance);
 void mdp_clock_init(void);
+void mdp_clock_enable(void);
+void mdp_clock_disable(void);
 void mdp_gdsc_ctrl(uint8_t enable);
+void clock_config_blsp_spi(uint8_t blsp_id, uint8_t qup_id);
 #endif

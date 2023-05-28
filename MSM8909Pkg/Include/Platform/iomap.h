@@ -1,4 +1,4 @@
-/* Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2014-2015, 2017-2018, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -79,6 +79,9 @@
 
 #define CLK_CTL_BASE                0x1800000
 
+#define PMI_SECOND_SLAVE_OFFSET 0x1
+#define PMI_SECOND_SLAVE_ADDR_BASE (PMI_SECOND_SLAVE_OFFSET << 16)
+
 #define SPMI_BASE                   0x02000000
 #define SPMI_GENI_BASE              (SPMI_BASE + 0xA000)
 #define SPMI_PIC_BASE               (SPMI_BASE +  0x01800000)
@@ -103,10 +106,51 @@
 #define  GCC_CRYPTO_AHB_CBCR        (CLK_CTL_BASE + 0x16024)
 
 /* I2C */
-#define GCC_BLSP1_QUP2_APPS_CBCR    (CLK_CTL_BASE + 0x3010)
-#define GCC_BLSP1_QUP2_CFG_RCGR     (CLK_CTL_BASE + 0x3018)
-#define GCC_BLSP1_QUP2_CMD_RCGR     (CLK_CTL_BASE + 0x3014)
+#define BLSP_QUP_BASE(blsp_id, qup_id) (PERIPH_SS_BASE + 0xB5000 + 0x1000 * qup_id)
+#define GCC_BLSP1_QUP1_APPS_CBCR    (CLK_CTL_BASE + 0x2008)
+#define GCC_BLSP1_QUP1_CFG_RCGR     (CLK_CTL_BASE + 0x2010)
+#define GCC_BLSP1_QUP1_CMD_RCGR     (CLK_CTL_BASE + 0x200C)
 
+#define GCC_BLSP1_QUP2_APPS_CBCR    (CLK_CTL_BASE + 0x3010)
+#define GCC_BLSP1_QUP2_CFG_RCGR     (CLK_CTL_BASE + 0x3004)
+#define GCC_BLSP1_QUP2_CMD_RCGR     (CLK_CTL_BASE + 0x3000)
+
+#define GCC_BLSP1_QUP3_APPS_CBCR    (CLK_CTL_BASE + 0x4020)
+#define GCC_BLSP1_QUP3_CFG_RCGR     (CLK_CTL_BASE + 0x4004)
+#define GCC_BLSP1_QUP3_CMD_RCGR     (CLK_CTL_BASE + 0x4000)
+
+#define GCC_BLSP1_QUP4_APPS_CBCR    (CLK_CTL_BASE + 0x5020)
+#define GCC_BLSP1_QUP4_CFG_RCGR     (CLK_CTL_BASE + 0x5004)
+#define GCC_BLSP1_QUP4_CMD_RCGR     (CLK_CTL_BASE + 0x5000)
+
+#define GCC_BLSP1_QUP5_APPS_CBCR    (CLK_CTL_BASE + 0x6020)
+#define GCC_BLSP1_QUP5_CFG_RCGR     (CLK_CTL_BASE + 0x6004)
+#define GCC_BLSP1_QUP5_CMD_RCGR     (CLK_CTL_BASE + 0x6000)
+
+#define GCC_BLSP1_QUP6_APPS_CBCR    (CLK_CTL_BASE + 0x7020)
+#define GCC_BLSP1_QUP6_CFG_RCGR     (CLK_CTL_BASE + 0x7004)
+#define GCC_BLSP1_QUP6_CMD_RCGR     (CLK_CTL_BASE + 0x7000)
+
+#define GCC_BLSP1_QUP3_SPI_APPS_CBCR        (CLK_CTL_BASE + 0x401C)
+#define GCC_BLSP1_QUP3_SPI_APPS_CMD_RCGR    (CLK_CTL_BASE + 0x4024)
+#define GCC_BLSP1_QUP3_SPI_CFG_RCGR         (CLK_CTL_BASE + 0x4028)
+#define GCC_BLSP1_QUP3_SPI_APPS_M           (CLK_CTL_BASE + 0x402C)
+#define GCC_BLSP1_QUP3_SPI_APPS_N           (CLK_CTL_BASE + 0x4030)
+#define GCC_BLSP1_QUP3_SPI_APPS_D           (CLK_CTL_BASE + 0x4034)
+
+#define GCC_BLSP1_QUP4_SPI_APPS_CBCR        (CLK_CTL_BASE + 0x501C)
+#define GCC_BLSP1_QUP4_SPI_APPS_CMD_RCGR    (CLK_CTL_BASE + 0x5024)
+#define GCC_BLSP1_QUP4_SPI_CFG_RCGR         (CLK_CTL_BASE + 0x5028)
+#define GCC_BLSP1_QUP4_SPI_APPS_M           (CLK_CTL_BASE + 0x502C)
+#define GCC_BLSP1_QUP4_SPI_APPS_N           (CLK_CTL_BASE + 0x5030)
+#define GCC_BLSP1_QUP4_SPI_APPS_D           (CLK_CTL_BASE + 0x5034)
+
+#define GCC_BLSP1_QUP5_SPI_APPS_CBCR        (CLK_CTL_BASE + 0x601C)
+#define GCC_BLSP1_QUP5_SPI_APPS_CMD_RCGR    (CLK_CTL_BASE + 0x6024)
+#define GCC_BLSP1_QUP5_SPI_CFG_RCGR         (CLK_CTL_BASE + 0x6028)
+#define GCC_BLSP1_QUP5_SPI_APPS_M           (CLK_CTL_BASE + 0x602C)
+#define GCC_BLSP1_QUP5_SPI_APPS_N           (CLK_CTL_BASE + 0x6030)
+#define GCC_BLSP1_QUP5_SPI_APPS_D           (CLK_CTL_BASE + 0x6034)
 
 /* GPLL */
 #define GPLL0_STATUS                (CLK_CTL_BASE + 0x21024)
@@ -165,10 +209,15 @@
  */
 #define RPMB_SND_RCV_BUF            0x90000000
 #define RPMB_SND_RCV_BUF_SZ         0x1
+		
+#define APP_REGION_ADDR_TZ_LEGACY_APP 0x87A00000		
+#define APP_REGION_ADDR_TZ_V4_APP     0x87900000		
+#define APP_REGION_SIZE_TZ_LEGACY_APP 0x200000		
+#define APP_REGION_SIZE_TZ_V4_APP     0x300000
 
 /* QSEECOM: Secure app region notification */
-#define APP_REGION_ADDR 0x87a00000
-#define APP_REGION_SIZE 0x200000
+#define APP_REGION_ADDR 0x87900000
+#define APP_REGION_SIZE 0x300000
 
 
 /* MDSS */
@@ -179,8 +228,8 @@
 #define DSI1_PHY_BASE               DSI0_PHY_BASE
 #define DSI0_PLL_BASE               (0x1AC8300)
 #define DSI1_PLL_BASE               DSI0_PLL_BASE
-#define REG_DSI(off)                (MIPI_DSI_BASE + 0x04 + (off))
-
+#define DSI0_REGULATOR_BASE         (0x1AC8780)
+#define DSI1_REGULATOR_BASE         DSI0_REGULATOR_BASE
 
 /* MDP */
 #define MDP_BASE                    0x1A00000
@@ -208,10 +257,6 @@
 #define MDP_DSI_VIDEO_DISPLAY_HCTL       REG_MDP(0xF0010)
 #define MDP_DSI_VIDEO_DISPLAY_V_START    REG_MDP(0xF0014)
 #define MDP_DSI_VIDEO_DISPLAY_V_END      REG_MDP(0xF0018)
-#define MDP_DSI_VIDEO_ACTIVE_HCTL        REG_MDP(0xF001C)
-#define MDP_DSI_VIDEO_ACTIVE_V_START     REG_MDP(0xF0020)
-#define MDP_DSI_VIDEO_ACTIVE_V_END       REG_MDP(0xF0024)
-
 #define MDP_DSI_VIDEO_BORDER_CLR         REG_MDP(0xF0028)
 #define MDP_DSI_VIDEO_HSYNC_SKEW         REG_MDP(0xF0030)
 #define MDP_DSI_VIDEO_CTL_POLARITY       REG_MDP(0xF0038)
@@ -231,10 +276,6 @@
 
 #define MDP_CGC_EN                  REG_MDP(0x100)
 #define MDP_AUTOREFRESH_CONFIG_P    REG_MDP(0x34C)
-#define MDP_AUTOREFRESH_EN          0x10000000
-/* Auto refresh fps = Panel fps / MDP_AUTOREFRESH_FRAME_NUM */
-/* Auto refresh fps = 60/10 = 6fps */
-#define MDP_AUTOREFRESH_FRAME_NUM   10
 #define MDP_SYNC_CONFIG_0           REG_MDP(0x300)
 
 #define SOFT_RESET                  0x118
@@ -279,6 +320,9 @@
 #define SEC_CTRL_CORE_BASE          0x00058000
 #define BOOT_CONFIG_OFFSET          0x0000602C
 #define BOOT_CONFIG_REG             (SEC_CTRL_CORE_BASE + BOOT_CONFIG_OFFSET)
+
+/* For Reading efuse entries to check whether mdp needs to be disabled or not */
+#define EFUSE_OFFSET		    0x00000044
 
 #define SECURITY_CONTROL_CORE_FEATURE_CONFIG0    0x0005E004
 /* EBI2 */

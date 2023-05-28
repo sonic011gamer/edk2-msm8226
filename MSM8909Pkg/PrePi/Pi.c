@@ -29,6 +29,15 @@ VOID EFIAPI ProcessLibraryConstructorList(VOID);
 
 STATIC VOID UartInit(VOID)
 {
+  /* Clear screen at new FB address */ 
+  UINT8 *base = (UINT8 *)0x80400000ull;
+  for (UINTN i = 0; i < 0x00800000; i++) {
+    base[i] = 0;
+  }
+
+  /* Move from old FB to the Windows Mobile platform one, so it fits with the UEFIplat */
+  MmioWrite32(0x1A90008,0x80400000);
+
   SerialPortInitialize();
 
   DEBUG((EFI_D_INFO, "\nTianoCore on MSM8909 (ARM)\n"));
@@ -47,14 +56,6 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   UINTN MemorySize     = 0;
   UINTN UefiMemoryBase = 0;
   UINTN UefiMemorySize = 0;
-
-#if USE_MEMORY_FOR_SERIAL_OUTPUT == 1
-  // Clear PStore area
-  UINT8 *base = (UINT8 *)0x8E300000ull;
-  for (UINTN i = 0; i < 0x00100000; i++) {
-    base[i] = 0;
-  }
-#endif
 
   // Architecture-specific initialization
   // Enable Floating Point
