@@ -21,6 +21,7 @@
 #define LoadConstantToReg(Data, Reg) \
     ldr Reg, =Data
 
+
 GCC_ASM_IMPORT (ArmDeInitialize)
 GCC_ASM_IMPORT (CEntryPoint)
 GCC_ASM_EXPORT (_ModuleEntryPoint)
@@ -38,42 +39,11 @@ _StackSize:
   .quad FixedPcdGet32(PcdPrePiStackSize)
 
 _ModuleEntryPoint:
-  // check if we're located at expected location
-  adr r4, .
-  ldr r5, =_ModuleEntryPoint
-  cmp r4, r5
-  bne _CopyUEFI
-  b	_ContinueModuleEntryPoint
-
-_CopyUEFI:
-  // find our start address by getting our expected offset, then subtracting it from our actual address
-  ldr r6, =FixedPcdGet64 (PcdFdBaseAddress)
-  sub r5, r5, r6 // r5 now holds offset of ArmPlatformPeiBootAction from start of FD base
-  sub r4, r4, r5 // r4 now holds address of actual FD base
-
-  // tweak the return address
-  // note: r14 is lr; gcc5 doesn't have the alias
-  sub r14, r14, r4
-  add r14, r14, r6
-  ldr r5, =FixedPcdGet64 (PcdFdSize)
-
-  // ugly memcpy
-_CopyLoop:
-        ldr     r2, [r4], #4
-        ldr     r3, [r4], #4
-        str     r2, [r6], #4
-        str     r3, [r6], #4
-        subs    r5, r5, #4
-        bne     _CopyLoop
-	//bx 	lr
-
-_ContinueModuleEntryPoint:
-
   /* World reset */
   bl ASM_PFX(ArmDeInitialize)
-
+  
   /* Clear r0 for function calls below */
-  mov r0, #0
+  mov r0, #0  
 
   /* First ensure all interrupts are disabled */
   bl ASM_PFX(ArmDisableInterrupts)

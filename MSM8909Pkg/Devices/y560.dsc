@@ -24,20 +24,11 @@
 
 
 [PcdsDynamicDefault.common]
-  #
-  # Set video resolution for boot options and for text setup.
-  # PlatformDxe can set the former at runtime.
-  #
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480 # /8 = column
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854 #/19 = row
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|480
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|854
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|117
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|25
-
-  [PcdsPatchableInModule]
-   # Console Resolution
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|25
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|117
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|45
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|60
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|45
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|60

@@ -16,29 +16,22 @@
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x40000000
   
+
+
   # Framebuffer (720x1280)
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1280
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|720
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1280
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|24
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
 
 
 [PcdsDynamicDefault.common]
-  #
-  # Set video resolution for boot options and for text setup.
-  # PlatformDxe can set the former at runtime.
-  #
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|720
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1280
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|720 # /8 = column
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1280 #/19 = row
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|720
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1280
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|160
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|36
-
-  [PcdsPatchableInModule]
-   # Console Resolution
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|720
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1280
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|37
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|160
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|68
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|90
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|68
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|90

@@ -26,12 +26,12 @@
 
 [FD.MSM8909PKG_UEFI]
 BaseAddress   = 0x80200000|gArmTokenSpaceGuid.PcdFdBaseAddress  # The base address of the Firmware in NOR Flash.
-Size          = 0x00200000|gArmTokenSpaceGuid.PcdFdSize         # The size in bytes of the FLASH Device
+Size          = 0x00100000|gArmTokenSpaceGuid.PcdFdSize         # The size in bytes of the FLASH Device
 ErasePolarity = 1
 
 # This one is tricky, it must be: BlockSize * NumBlocks = Size
 BlockSize     = 0x00001000
-NumBlocks     = 0x200
+NumBlocks     = 0x100
 
 ################################################################################
 #
@@ -49,30 +49,8 @@ NumBlocks     = 0x200
 #
 ################################################################################
 
-# from ArmVirtPkg/ArmVirtQemuKernel.fdf
-#
-# Implement the Linux kernel header layout so that the loader will identify
-# it as something bootable, and execute it with a FDT pointer in x0 or r2.
-#
-0x00000000|0x00008000
-DATA = {
-  0x08, 0x10, 0x4f, 0xe2, # adr r1, .
-  0x02, 0x00, 0xa0, 0xe1, # mov r0, r2 (DTB)
-  0x00, 0x00, 0xa0, 0xe1, # nop
-  0x00, 0x00, 0xa0, 0xe1, # nop
-  0x00, 0x00, 0xa0, 0xe1, # nop
-  0x00, 0x00, 0xa0, 0xe1, # nop
-  0x00, 0x00, 0xa0, 0xe1, # nop
-  0x00, 0x00, 0xa0, 0xe1, # nop
+0x00000000|0x00100000
 
-  0xf6, 0x1f, 0x00, 0xea, # b 0x8000
-  0x18, 0x28, 0x6f, 0x01, # magic
-  0x00, 0x00, 0x00, 0x00, # start
-  0x00, 0x00, 0x20, 0x00, # image size: 2 MB
-  0x01, 0x02, 0x03, 0x04  # endiannness flag
-}
-
-0x00008000|0x001f8000
 gArmTokenSpaceGuid.PcdFvBaseAddress|gArmTokenSpaceGuid.PcdFvSize
 FV = FVMAIN_COMPACT
 
@@ -164,8 +142,8 @@ READ_LOCK_STATUS   = TRUE
   INF MSM8909Pkg/Drivers/GpioTlmmInterruptDxe/GpioTlmmInterruptDxe.inf
   INF MSM8909Pkg/Drivers/SpmiDxe/SpmiDxe.inf
   INF MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41Dxe.inf
-  INF MSM8909Pkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
-  INF MSM8909Pkg/Drivers/KeypadDxe/KeypadDxe.inf
+ #INF MSM8909Pkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
+ #INF MSM8909Pkg/Drivers/KeypadDxe/KeypadDxe.inf
   INF MSM8909Pkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF MSM8909Pkg/Drivers/ClockDxe/ClockDxe.inf
   INF MSM8909Pkg/Drivers/SdhciMMCHSDxe/SdhciMMCHS.inf
