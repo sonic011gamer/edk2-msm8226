@@ -20,5 +20,7 @@ jobs:
       with:
         name: uefi.img
         path: ./uefi.img
+    - uses: actions/upload-artifact@v3
+      with:
         name: emmc_appsboot.mbn
         path: ./workspace/emmc_appsboot.mbn
