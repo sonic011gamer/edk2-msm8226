@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 sudo apt update
-sudo apt install -y build-essential uuid-dev iasl git nasm crossbuild-essential-armel crossbuild-essential-armhf bc skales
+sudo apt install -y build-essential uuid-dev iasl git nasm crossbuild-essential-armel crossbuild-essential-armhf bc mkbootimg
 curdir="$PWD"
 cd ..
 git clone https://github.com/tianocore/edk2.git -b edk2-stable202302 --recursive

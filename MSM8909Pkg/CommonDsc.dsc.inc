@@ -295,7 +295,7 @@
   #  DEBUG_EVENT     0x00080000  // Event messages
   #  DEBUG_ERROR     0x80000000  // Error
 
-  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80000046
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80000002
   gEfiMdePkgTokenSpaceGuid.PcdReportStatusCodePropertyMask|0x06
 
   #

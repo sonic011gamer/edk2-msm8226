@@ -75,4 +75,3 @@
   gMSM8909PkgTokenSpaceGuid.PcdPreAllocatedMemorySize
   gMSM8909PkgTokenSpaceGuid.PcdUefiMemPoolSize
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferAddress
-  gMSM8909PkgTokenSpaceGuid.PcdIsShimBuild

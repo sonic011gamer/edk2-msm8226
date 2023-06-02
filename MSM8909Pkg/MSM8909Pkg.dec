@@ -62,7 +62,6 @@
  # Memory allocation
   gMSM8909PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x3CD00000|UINT64|0x00000a106
   gMSM8909PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x03300000|UINT32|0x00000a107
-  gMSM8909PkgTokenSpaceGuid.PcdIsShimBuild|TRUE|BOOLEAN|0x000000323
   # PON Debounce
   gQcomTokenSpaceGuid.PcdPONDebounce|0x00000000|UINT32|0x00000F09
   # QTimer
