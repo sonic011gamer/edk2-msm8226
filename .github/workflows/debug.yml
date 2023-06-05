@@ -18,9 +18,13 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: uefi.img
-        path: ./uefi.img
+        name: Y560
+        path: ./workspace/Y560.img
     - uses: actions/upload-artifact@v3
       with:
-        name: emmc_appsboot.mbn
+        name: Lumia 650
         path: ./workspace/emmc_appsboot.mbn
+    - uses: actions/upload-artifact@v3
+      with:
+        name: E1M
+        path: ./workspace/E1M.img

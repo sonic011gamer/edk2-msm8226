@@ -56,7 +56,6 @@
   MallocLib|MSM8909Pkg/Library/MallocLib/MallocLib.inf
 #  KeypadDeviceHelperLib|MSM8909Pkg/Library/KeypadDeviceHelperLib/KeypadDeviceHelperLib.inf
 #  KeypadDeviceImplLib|MSM8909Pkg/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
-  ButtonsLib|MSM8909Pkg/Library/ButtonsLib/ButtonsLib.inf
   DloadUtilLib|MSM8909Pkg/Library/DloadUtilLib/DloadUtilLib.inf
   QcomPlatformClockInitLib|MSM8909Pkg/Library/QcomPlatformClockInitLib/QcomPlatformClockInitLib.inf
   QcomPlatformMmcLib|MSM8909Pkg/Library/PlatformMmcLib/QcomPlatformMmcLib.inf
@@ -246,6 +245,12 @@
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiExposedTableVersions|0x20
 
+  [PcdsDynamicDefault.common]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|0
+
 ################################################################################
 #
 # Components Section - list of all EDK II Modules needed by this Platform
@@ -305,7 +310,6 @@
   MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41Dxe.inf
 #  MSM8909Pkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
 #  MSM8909Pkg/Drivers/KeypadDxe/KeypadDxe.inf
-  MSM8909Pkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   MSM8909Pkg/Drivers/ClockDxe/ClockDxe.inf
   MSM8909Pkg/Drivers/SdhciMMCHSDxe/SdhciMMCHS.inf
 

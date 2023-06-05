@@ -28,7 +28,3 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854 #/19 = row
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|480
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|854
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|45
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|60
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|45
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|60

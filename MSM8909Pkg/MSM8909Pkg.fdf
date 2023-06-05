@@ -144,7 +144,6 @@ READ_LOCK_STATUS   = TRUE
   INF MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41Dxe.inf
  #INF MSM8909Pkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
  #INF MSM8909Pkg/Drivers/KeypadDxe/KeypadDxe.inf
-  INF MSM8909Pkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF MSM8909Pkg/Drivers/ClockDxe/ClockDxe.inf
   INF MSM8909Pkg/Drivers/SdhciMMCHSDxe/SdhciMMCHS.inf
 

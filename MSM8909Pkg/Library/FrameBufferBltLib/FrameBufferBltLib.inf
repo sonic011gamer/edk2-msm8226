@@ -28,7 +28,12 @@
   BaseLib
   BaseMemoryLib
   DebugLib
+  PcdLib
+
+[Pcd]
+gMSM8909PkgTokenSpaceGuid.IsAndroidPlatform
 
 [Packages]
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
+  MSM8909Pkg/MSM8909Pkg.dec

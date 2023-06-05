@@ -157,7 +157,7 @@ FrameBufferBltConfigure (
   CopyMem (Configure->PixelShl,    PixelShl, sizeof (PixelShl));
   CopyMem (Configure->PixelShr,    PixelShr, sizeof (PixelShr));
 
-  if (FrameBufferInfo->HorizontalResolution < 1080) {
+  if (PcdGetBool(IsAndroidPlatform)) {
    Configure->BytesPerPixel     = BytesPerPixel - (BytesPerPixel / 4); // Defaults to ex. 24bpp for 32bpp and 3bpp for 4bpp usecases
   } else {
    Configure->BytesPerPixel     = BytesPerPixel;
