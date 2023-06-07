@@ -25,10 +25,3 @@
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1280
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
   gMSM8909PkgTokenSpaceGuid.IsAndroidPlatform|FALSE
-
-
-[PcdsDynamicDefault.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|720 # /8 = column
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1280 #/19 = row
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|720
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1280

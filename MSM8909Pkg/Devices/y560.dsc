@@ -21,10 +21,3 @@
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854
-
-
-[PcdsDynamicDefault.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480 # /8 = column
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854 #/19 = row
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|480
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|854
