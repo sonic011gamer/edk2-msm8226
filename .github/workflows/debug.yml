@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "stable" ]
+    branches: [ "sdcard" ]
   pull_request:
-    branches: [ "stable" ]
+    branches: [ "sdcard" ]
 
 jobs:
   build:
