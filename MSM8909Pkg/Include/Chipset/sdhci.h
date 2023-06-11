@@ -29,7 +29,7 @@
 #ifndef __PLATFORM_SDHCI_H_
 #define __PLATFORM_SDHCI_H_
 
-//#define DEBUG_SDHCI
+#define DEBUG_SDHCI
 
 /*
  * Capabilities for the host controller

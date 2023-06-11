@@ -10,4 +10,4 @@ rm BootShim.elf
 cd ..
 cat BootShim/BootShim.bin workspace/Build/MSM8909Pkg/DEBUG_GCC5/FV/MSM8909PKG_UEFI.fd > workspace/bootpayload.bin
 gzip -c < workspace/bootpayload.bin >MSM8909_UEFI.fd.gz
-mkbootimg --kernel MSM8909_UEFI.fd.gz --kernel_offset 0x00008000 --dtb device_specific/saana.dtb --ramdisk workspace/empty --base 0x80000000 --pagesize 2048 --cmdline "" --output workspace/Y560.img
+mkbootimg --kernel MSM8909_UEFI.fd.gz --kernel_offset 0x00008000 --dtb device_specific/huawei-y560.dtb --ramdisk workspace/empty --base 0x80000000 --pagesize 2048 --cmdline "" --output workspace/Y560.img
