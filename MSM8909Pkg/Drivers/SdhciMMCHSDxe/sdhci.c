@@ -112,7 +112,7 @@ void sdhci_reset(struct sdhci_host *host, uint8_t mask)
 		}
 
 		timeout--;
-		mdelay(1);
+		gBS->Stall(1000);
 
 	} while(1);
 }
@@ -410,7 +410,7 @@ static uint8_t sdhci_cmd_complete(struct sdhci_host *host, struct mmc_command *c
 		}
 
 		retry++;
-		udelay(1);
+		gBS->Stall(1);
 		if (retry == SDHCI_MAX_CMD_RETRY) {
 			DEBUG ((EFI_D_INFO | EFI_D_LOAD,"Error: Command never completed\n"));
 			dprintf(CRITICAL, "Error: Command never completed\n");
@@ -480,7 +480,7 @@ static uint8_t sdhci_cmd_complete(struct sdhci_host *host, struct mmc_command *c
 			}
 
 			retry++;
-			udelay(1);
+			gBS->Stall(1);
 			if (retry == max_trans_retry) {
 				DEBUG ((EFI_D_INFO | EFI_D_LOAD,"Error: Command never completed\n"));
 				dprintf(CRITICAL, "Error: Transfer never completed\n");
@@ -723,7 +723,7 @@ uint32_t sdhci_send_command(struct sdhci_host *host, struct mmc_command *cmd)
 
 		if (!present_state)
 			break;
-		udelay(1000);
+		gBS->Stall(1000);
 		retry++;
 		if (retry == 10) {
 			dprintf(CRITICAL, "Error: CMD or DAT lines were never freed\n");
@@ -941,6 +941,11 @@ void sdhci_init(struct sdhci_host *host)
 	/* Wait for power interrupt to be handled */
 	Status = gBS->WaitForEvent(1, &host->sdhc_event, &Index);
 	ASSERT_EFI_ERROR(Status);
+
+  	/* Complete */
+ 	gBS->CloseEvent(&host->sdhc_event);
+  	host->sdhc_event           = NULL;
+  	host->msm_host->sdhc_event = NULL;
 
 	/* Set bus width */
 	sdhci_set_bus_width(host, SDHCI_BUS_WITDH_1BIT);

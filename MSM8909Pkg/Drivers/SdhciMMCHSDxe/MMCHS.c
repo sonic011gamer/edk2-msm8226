@@ -7,8 +7,9 @@ STATIC struct mmc_device* PlatformCallbackInitSlot (struct mmc_config_data *conf
   
   // initialize MMC device
   struct mmc_device *dev = mmc_init (config);
-  if (dev == NULL)
+  if (dev == NULL) {
     return NULL;
+  }
 
   // allocate instance
   Status = BioInstanceContructor (&Instance);
@@ -16,13 +17,19 @@ STATIC struct mmc_device* PlatformCallbackInitSlot (struct mmc_config_data *conf
     return dev;
   }
 
-  // set data
+  // Set data
   Instance->MmcDev               = dev;
   Instance->BlockMedia.BlockSize = dev->card.block_size;
   Instance->BlockMedia.LastBlock = dev->card.capacity/Instance->BlockMedia.BlockSize - 1;
 
-  // give every device a slighty different GUID
+  // Give every device a slighty different GUID
   Instance->DevicePath.Mmc.Guid.Data4[7] = config->slot;
+
+  // Register for ExitBS event
+  Status = gBS->CreateEventEx(
+      EVT_NOTIFY_SIGNAL, TPL_NOTIFY, MMCHSExitBsUninit, (VOID *)Instance,
+      &gEfiEventExitBootServicesGuid, &Instance->ExitBsEvent);
+  ASSERT_EFI_ERROR(Status);
 
   // Publish BlockIO
   Status = gBS->InstallMultipleProtocolInterfaces (
@@ -31,6 +38,7 @@ STATIC struct mmc_device* PlatformCallbackInitSlot (struct mmc_config_data *conf
               &gEfiDevicePathProtocolGuid, &Instance->DevicePath,
               NULL
               );
+  ASSERT_EFI_ERROR(Status);
 
   return dev;
 }
@@ -58,22 +66,27 @@ STATIC BIO_INSTANCE mBioTemplate = {
     0,                                        // Pad
     0                                         // LastBlock
   },
-  { // DevicePath
-   {
-      {
-        HARDWARE_DEVICE_PATH, HW_VENDOR_DP,
-        { (UINT8) (sizeof(VENDOR_DEVICE_PATH)), (UINT8) ((sizeof(VENDOR_DEVICE_PATH)) >> 8) },
-      },
-      // Hardware Device Path for Bio
-      EFI_CALLER_ID_GUID // Use the driver's GUID
-    },
-
     {
-      END_DEVICE_PATH_TYPE,
-      END_ENTIRE_DEVICE_PATH_SUBTYPE,
-      { sizeof (EFI_DEVICE_PATH_PROTOCOL), 0 }
-    }
-  }
+        // DevicePath
+        {
+            {
+                HARDWARE_DEVICE_PATH,
+                HW_VENDOR_DP,
+                {(UINT8)(sizeof(VENDOR_DEVICE_PATH)),
+                 (UINT8)((sizeof(VENDOR_DEVICE_PATH)) >> 8)},
+            },
+            // Hardware Device Path for Bio
+            EFI_CALLER_ID_GUID // Use the driver's GUID
+        },
+
+        {
+            END_DEVICE_PATH_TYPE,
+            END_ENTIRE_DEVICE_PATH_SUBTYPE,
+            {sizeof(EFI_DEVICE_PATH_PROTOCOL), 0},
+        },
+    },
+    NULL, // MMCDev
+    NULL, // ExitBS Event
 };
 
 /*
@@ -202,6 +215,7 @@ MMCHSReadBlocks (
 {
   BIO_INSTANCE              *Instance;
   EFI_BLOCK_IO_MEDIA        *Media;
+  EFI_TPL                   OldTpl;
   UINTN                     BlockSize;
   UINTN                     RC;
 
@@ -233,7 +247,10 @@ MMCHSReadBlocks (
     return EFI_SUCCESS;
   }
 
-  RC = mmc_read (Instance, (UINT64) Lba * BlockSize, Buffer, BufferSize);
+  OldTpl = gBS->RaiseTPL(TPL_NOTIFY);
+  RC     = mmc_read(Instance, (UINT64)Lba * BlockSize, Buffer, BufferSize);
+  gBS->RestoreTPL(OldTpl);
+
   if (RC == 0)
     return EFI_SUCCESS;
   else
@@ -252,8 +269,9 @@ MMCHSWriteBlocks (
 {
   BIO_INSTANCE              *Instance;
   EFI_BLOCK_IO_MEDIA        *Media;
-  UINTN                      BlockSize;
+  UINTN                     BlockSize;
   UINTN                     RC;
+  EFI_TPL                   OldTpl;
 
   Instance  = BIO_INSTANCE_FROM_BLOCKIO_THIS(This);
   Media     = &Instance->BlockMedia;
@@ -283,7 +301,10 @@ MMCHSWriteBlocks (
     return EFI_SUCCESS;
   }
 
-  RC = mmc_write (Instance, (UINT64) Lba * BlockSize, BufferSize, Buffer);
+  OldTpl = gBS->RaiseTPL(TPL_NOTIFY);
+  RC     = mmc_write(Instance, (UINT64)Lba * BlockSize, BufferSize, Buffer);
+  gBS->RestoreTPL(OldTpl);
+
   if (RC == 0)
     return EFI_SUCCESS;
   else
@@ -292,11 +313,25 @@ MMCHSWriteBlocks (
 
 EFI_STATUS
 EFIAPI
-MMCHSFlushBlocks (
-  IN EFI_BLOCK_IO_PROTOCOL  *This
-  )
+MMCHSFlushBlocks(IN EFI_BLOCK_IO_PROTOCOL *This)
 {
+  // Nothing required
   return EFI_SUCCESS;
+}
+
+VOID EFIAPI MMCHSExitBsUninit(IN EFI_EVENT Event, IN VOID *Context)
+{
+  EFI_TPL OldTpl;
+
+  BIO_INSTANCE *Instance = (BIO_INSTANCE *)Context;
+  ASSERT(Instance != NULL);
+
+  OldTpl = gBS->RaiseTPL(TPL_NOTIFY);
+
+  // Put card into sleep
+  mmc_put_card_to_sleep(Instance->MmcDev);
+
+  gBS->RestoreTPL(OldTpl);
 }
 
 EFI_STATUS
