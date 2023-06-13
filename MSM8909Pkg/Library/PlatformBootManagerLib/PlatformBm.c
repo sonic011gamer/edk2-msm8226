@@ -590,8 +590,14 @@ PlatformBootManagerAfterConsole (
     DEBUG((DEBUG_INFO, "ProcessCapsules returned %r\n", Status));
   }
 
-  EfiBootManagerRefreshAllBootOption ();
-
+  //EfiBootManagerRefreshAllBootOption ();
+	//	
+  // Register UEFI Shell	
+  //	
+  PlatformRegisterFvBootOption (	
+    &gUefiShellFileGuid, L"UEFI Shell", LOAD_OPTION_ACTIVE	
+    );	
+    
   PlatformRegisterOptionsAndKeys ();
 }
 
