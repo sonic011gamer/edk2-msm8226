@@ -186,7 +186,6 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
   INF MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
   INF MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
-# INF RuleOverride = ACPITABLE MSM8909Pkg/AcpiTables/AcpiTables.inf
 
   #
   # SMBIOS Support
@@ -196,13 +195,12 @@ READ_LOCK_STATUS   = TRUE
 
   # ACPI Tables
   FILE FREEFORM = 7E374E25-8E01-4FEE-87F2-390C23C606CD {
-    SECTION RAW = MSM8909Pkg/AcpiTables/BGRT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/CSRT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/DBG2.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/DSDT.aml
-    SECTION RAW = MSM8909Pkg/AcpiTables/FACS.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/FACP.aml
-    SECTION RAW = MSM8909Pkg/AcpiTables/FADT.aml
+    SECTION RAW = MSM8909Pkg/AcpiTables/FACS.aml
+    SECTION RAW = MSM8909Pkg/AcpiTables/FPDT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/GTDT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/MADT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/SSDT.aml
