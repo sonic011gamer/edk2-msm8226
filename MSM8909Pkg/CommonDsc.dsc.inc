@@ -64,7 +64,7 @@
   ArmSmcLib|ArmPkg/Library/ArmSmcLib/ArmSmcLib.inf
   ArmMmuLib|ArmPkg/Library/ArmMmuLib/ArmMmuBaseLib.inf
 
-  ResetSystemLib|MSM8909Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+  EfiResetSystemLib|MSM8909Pkg/Library/ResetSystemLib/ResetSystemLib.inf
 
   # ARM PL011 UART Driver
   PL011UartClockLib|ArmPlatformPkg/Library/PL011UartClockLib/PL011UartClockLib.inf
@@ -124,10 +124,14 @@
   # Add support for GCC stack protector
   NULL|MdePkg/Library/BaseStackCheckLib/BaseStackCheckLib.inf
 
+  SpmiLib|MSM8909Pkg/Drivers/SpmiDxe/SpmiImplLib.inf
+  Pm8x41Lib|MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41ImplLib.inf
+
 [LibraryClasses.common.SEC]
   ArmGicArchLib|ArmPkg/Library/ArmGicArchSecLib/ArmGicArchSecLib.inf
   PcdLib|MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
   BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf
+  EfiResetSystemLib|MSM8909Pkg/Library/ResetSystemLib/ResetSystemLib.inf
 
 [LibraryClasses.common.PEI_CORE]
   HobLib|MdePkg/Library/PeiHobLib/PeiHobLib.inf
@@ -182,12 +186,16 @@
   SecurityManagementLib|MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf
   PerformanceLib|MdeModulePkg/Library/DxePerformanceLib/DxePerformanceLib.inf
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+  SpmiLib|MSM8909Pkg/Drivers/SpmiDxe/SpmiImplLib.inf
+  Pm8x41Lib|MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41ImplLib.inf
 
 [LibraryClasses.common.UEFI_APPLICATION]
   UefiDecompressLib|MdePkg/Library/BaseUefiDecompressLib/BaseUefiTianoCustomDecompressLib.inf
   PerformanceLib|MdeModulePkg/Library/DxePerformanceLib/DxePerformanceLib.inf
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
   HiiLib|MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf
+  SpmiLib|MSM8909Pkg/Drivers/SpmiDxe/SpmiImplLib.inf
+  Pm8x41Lib|MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41ImplLib.inf
 
 [LibraryClasses.common.UEFI_DRIVER,LibraryClasses.common.UEFI_APPLICATION]
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
@@ -201,6 +209,8 @@
   PerformanceLib|MdeModulePkg/Library/DxePerformanceLib/DxePerformanceLib.inf
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+  SpmiLib|MSM8909Pkg/Drivers/SpmiDxe/SpmiImplLib.inf
+  Pm8x41Lib|MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41ImplLib.inf
 
 [LibraryClasses.common.DXE_RUNTIME_DRIVER]
   HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
@@ -291,7 +301,7 @@
   #  DEBUG_EVENT     0x00080000  // Event messages
   #  DEBUG_ERROR     0x80000000  // Error
 
-  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x800fee0f
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x800feeCf # 0x8FEF4DCF 
   gEfiMdePkgTokenSpaceGuid.PcdReportStatusCodePropertyMask|0x07
 
   #
