@@ -92,7 +92,7 @@
   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
 
   # SimpleFbDxe
-  FrameBufferBltLib|MSM8909Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+   FrameBufferBltLib|MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
   
     # Platform Drivers
 !if $(USE_SCREEN_FOR_SERIAL_OUTPUT) == 1
@@ -170,11 +170,11 @@
   #
   # ARM General Interrupt Controller
   #
-  gArmTokenSpaceGuid.PcdGicDistributorBase|0x0b000000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0b002000
+  gArmTokenSpaceGuid.PcdGicDistributorBase|0xf9000000
+  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0xf9002000
 
   # SoC Drivers GPIO TLMM
-  gQcomTokenSpaceGuid.PcdGpioTlmmBaseAddress|0x1000000
+  gQcomTokenSpaceGuid.PcdGpioTlmmBaseAddress|0xFD510000
   gQcomTokenSpaceGuid.PcdGpioTlmmSummaryIrq|240
   gQcomTokenSpaceGuid.PcdGpioTlmmIoOffset|0x1004
   gQcomTokenSpaceGuid.PcdGpioTlmmIoElementSize|0x10
@@ -204,7 +204,7 @@
   gQcomTokenSpaceGuid.PcdGpioTlmmNumFunctions|12
 
   # SoC Drivers SPMI
-  gQcomTokenSpaceGuid.PcdSpmiBaseAddress|0x02000000
+  gQcomTokenSpaceGuid.PcdSpmiBaseAddress|0xFC4C0000
   
    # SoC Drivers MMC
   gQcomTokenSpaceGuid.PcdSdccMciHcMode|0x00000078

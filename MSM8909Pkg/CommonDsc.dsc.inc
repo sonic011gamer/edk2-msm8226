@@ -264,7 +264,7 @@
   # PcdPrePiCpuMemorySize
   #
   gEmbeddedTokenSpaceGuid.PcdPrePiCpuIoSize|0
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x80C00000
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x00C00000
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
   gEfiMdePkgTokenSpaceGuid.PcdMaximumUnicodeStringLength|1000000
   gEfiMdePkgTokenSpaceGuid.PcdMaximumAsciiStringLength|1000000
@@ -282,8 +282,6 @@
   # CLEAR_MEMORY_ENABLED       0x08
   # ASSERT_BREAKPOINT_ENABLED  0x10
   # ASSERT_DEADLOOP_ENABLED    0x20
-  gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0x2f
-
   #  DEBUG_INIT      0x00000001  // Initialization
   #  DEBUG_WARN      0x00000002  // Warnings
   #  DEBUG_LOAD      0x00000004  // Load events
@@ -300,10 +298,13 @@
   #  DEBUG_LOADFILE  0x00020000  // UNDI Driver
   #  DEBUG_EVENT     0x00080000  // Event messages
   #  DEBUG_ERROR     0x80000000  // Error
-
-  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x800feeCf # 0x8FEF4DCF 
-  gEfiMdePkgTokenSpaceGuid.PcdReportStatusCodePropertyMask|0x07
-
+!if $(TARGET) == RELEASE
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0x0e
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80000000
+!else
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0x0f
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x800B05C7
+!endif
   #
   # Optional feature to help prevent EFI memory map fragments
   # Turned on and off via: PcdPrePiProduceMemoryTypeInformationHob

@@ -58,6 +58,21 @@ _ModuleEntryPoint:
   bl ASM_PFX(ArmInvalidateTlb)
     
 _SetupPrimaryCoreStack:
+      
+  //Disable Strict alignment checking & Enable Instruction cache
+  mrc     p15, 0, r0, c1, c0, 0
+  bic     r0, r0, #0x00002300     /* clear bits 13, 9:8 (--V- --RS) */
+  bic     r0, r0, #0x00000005     /* clear bits 0, 2 (---- -C-M) */
+  bic     r0, r0, #0x00000002     /* Clear bit 1 (Alignment faults) */
+  orr     r0, r0, #0x00001000     /* set bit 12 (I) enable I-Cache */
+  mcr     p15, 0, r0, c1, c0, 0
+  // Enable NEON register in case folks want to use them for optimizations (CopyMem)
+  mrc     p15, 0, r0, c1, c0, 2
+  orr     r0, r0, #0x00f00000   // Enable VPF access (V* instructions)
+  mcr     p15, 0, r0, c1, c0, 2
+  mov     r0, #0x40000000       // Set EN bit in FPEXC
+  mcr     p10,#0x7,r0,c8,c0,#0  // msr     FPEXC,r0 in ARM assembly
+
   ldr r0, _StackBase     /* Stack base arg0 */
   ldr r1, _StackSize     /* Stack size arg1 */
   

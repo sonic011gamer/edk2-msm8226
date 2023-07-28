@@ -1,4 +1,4 @@
-/* Copyright (c) 2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,8 +26,8 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __IRQS_MSM8909_H
-#define __IRQS_MSM8909_H
+#ifndef __IRQS_MSM8226_H
+#define __IRQS_MSM8226_H
 
 /* MSM ACPU Interrupt Numbers */
 
@@ -49,8 +49,7 @@
 
 #define SDCC1_PWRCTL_IRQ                       (GIC_SPI_START + 138)
 #define SDCC2_PWRCTL_IRQ                       (GIC_SPI_START + 221)
-
-#define SMD_IRQ                                (GIC_SPI_START + 168)
+#define SDCC3_PWRCTL_IRQ                       (GIC_SPI_START + 224)
 
 /* Retrofit universal macro names */
 #define INT_USB_HS                             USB1_HS_IRQ
@@ -63,6 +62,4 @@
 
 #define NR_IRQS                                (NR_MSM_IRQS + NR_GPIO_IRQS + \
                                                NR_BOARD_IRQS)
-
-#define BLSP_QUP_IRQ(blsp_id, qup_id)          (GIC_SPI_START + 95 + qup_id)
-#endif /* __IRQS_MSM8909_H */
+#endif	/* __IRQS_MSM8226_H */

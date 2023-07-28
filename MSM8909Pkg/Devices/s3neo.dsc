@@ -12,12 +12,12 @@
 !include MSM8909Pkg/MSM8909Pkg.dsc
 
 [PcdsFixedAtBuild.common]
-  # System Memory (1GB)
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x40000000
+  # System Memory (1.5GB)
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x00000000
+  gArmTokenSpaceGuid.PcdSystemMemorySize|0x60000000
   
-  # Framebuffer (480x854)
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854
+  # Framebuffer (720x1280)
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1280
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|720
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1280

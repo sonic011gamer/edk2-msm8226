@@ -7,7 +7,6 @@
 #include <Platform/iomap.h>
 #include <Platform/irqs.h>
 
-#define FORCE_SDCARD := 1
 static uint32_t mmc_pwrctl_base[] =
 	{ MSM_SDC1_BASE, MSM_SDC2_BASE };
 
@@ -25,17 +24,18 @@ VOID LibQcomTargetMmcSdhciInit(INIT_SLOT_CB InitSlot)
     uint8_t dat;
     struct mmc_config_data config = {0};
 
-#ifndef FORCE_SDCARD
   /* Try slot 1 */
+  config.bus_width     = DATA_BUS_WIDTH_8BIT;
+  config.max_clk_rate  = MMC_CLK_200MHZ;
   config.slot          = 1;
   config.sdhc_base     = mmc_sdhci_base[config.slot - 1];
   config.pwrctl_base   = mmc_pwrctl_base[config.slot - 1];
   config.pwr_irq       = mmc_sdc_pwrctl_irq[config.slot - 1];
   config.hs200_support = 1;
   config.hs400_support = 0;
-  clk = TLMM_CUR_VAL_10MA;
-  cmd = TLMM_CUR_VAL_8MA;
-  dat = TLMM_CUR_VAL_8MA;
+  clk = TLMM_CUR_VAL_16MA;
+  cmd = TLMM_CUR_VAL_10MA;
+  dat = TLMM_CUR_VAL_6MA;
   reg = SDC1_HDRV_PULL_CTL;
   /* Drive strength configs for sdc pins */
   struct tlmm_cfgs sdc1_hdrv_cfg[] = {
@@ -60,7 +60,6 @@ VOID LibQcomTargetMmcSdhciInit(INIT_SLOT_CB InitSlot)
   if (InitSlot(&config) == NULL) {
     DEBUG((DEBUG_ERROR, "Can't initialize mmc slot %u\n", config.slot));
   }
-#endif
 
   DEBUG((EFI_D_LOAD, "Initializing mmc_slot %u\n", 2));
   config.bus_width     = DATA_BUS_WIDTH_4BIT;
@@ -74,7 +73,7 @@ VOID LibQcomTargetMmcSdhciInit(INIT_SLOT_CB InitSlot)
 
   clk = TLMM_CUR_VAL_16MA;
   cmd = TLMM_CUR_VAL_10MA;
-  dat = TLMM_CUR_VAL_10MA;
+  dat = TLMM_CUR_VAL_6MA;
   reg = SDC2_HDRV_PULL_CTL;
 
   struct tlmm_cfgs sdc2_hdrv_cfg[] = {
@@ -97,6 +96,5 @@ VOID LibQcomTargetMmcSdhciInit(INIT_SLOT_CB InitSlot)
     // Init SD card slot
     if (InitSlot(&config) == NULL) {
         DEBUG((DEBUG_ERROR, "Can't initialize mmc slot %u\n", config.slot));
-		ASSERT_EFI_ERROR("Hanging here, sdcard failed to initialize");
     }
 }
