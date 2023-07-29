@@ -30,9 +30,6 @@
   DebugLib
   PcdLib
 
-[Pcd]
-gMSM8909PkgTokenSpaceGuid.IsAndroidPlatform
-
 [Packages]
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec

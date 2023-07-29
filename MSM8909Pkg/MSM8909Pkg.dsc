@@ -92,7 +92,7 @@
   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
 
   # SimpleFbDxe
-   FrameBufferBltLib|MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+   FrameBufferBltLib|MSM8909Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
   
     # Platform Drivers
 !if $(USE_SCREEN_FOR_SERIAL_OUTPUT) == 1
@@ -290,8 +290,8 @@
   EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
 
   MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
-  MSM8909Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
-  MSM8909Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
+  MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitterDxe.inf
+  MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
   MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
   MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
 
